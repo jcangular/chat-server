@@ -1,8 +1,9 @@
 require('dotenv').config();
-import Server from './classes/server';
+import ChatServer from './classes/server';
 import router from './routes/router';
 
-const server = new Server();
+
+const server = ChatServer.instance;
 server.app.use(router);
 
 server.start(() => {

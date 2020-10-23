@@ -1,29 +1,27 @@
 {
-  "compilerOptions": {
-    "target": "ES6",
-    "module": "commonjs",
-    "sourceMap": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
-    
-    /* Strict Type-Checking Options */
-    "strict": true,
-    "noImplicitAny": true,
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "commonjs",
+        "sourceMap": true,
+        "outDir": "./dist",
+        "rootDir": "./src",
 
-    /* Module Resolution Options */
-    "paths": {
-        "@src": ["src/*"]
+        /* Strict Type-Checking Options */
+        "strict": true,
+        "noImplicitAny": true,
+
+        /* Module Resolution Options */
+        // "paths": {},
+        // "types": [],
+        "moduleResolution": "node",
+        "baseUrl": "./src",
+        "esModuleInterop": true,
+
+        /* Advance Options*/
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true
     },
-    // "types": [],
-    "moduleResolution": "node",
-    "baseUrl": "./src",
-    "esModuleInterop": true,
-
-    /* Advance Options*/
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  },
-  "compileOnSave": true,
-  "include": ["src/**/*"],
-  "exclude": ["node_module", "**/*.test.ts"]
+    "compileOnSave": true,
+    "include": ["src/**/*"],
+    "exclude": ["node_module", "**/*.test.ts"]
 }
