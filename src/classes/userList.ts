@@ -11,6 +11,11 @@ export default class UserList {
         this.users.push(user);
     }
 
+    /**
+     * Actualiza el nombre del usuario.
+     * @param id es el id del usuario.
+     * @param name es el nombre del usuario.
+     */
     public updateName(id: string, name: string): void {
         const user = this.users.find(u => u.id === id);
         if (user) {
@@ -19,6 +24,9 @@ export default class UserList {
         }
     }
 
+    /**
+     * Obtiene el listado de usuarios conectados.
+     */
     public getUserList(): User[] {
         return this.users;
     }

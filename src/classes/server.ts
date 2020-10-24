@@ -14,7 +14,7 @@ export default class ChatServer {
 
     public readonly app: Application;
     public readonly port: number;
-    private readonly io: SocketServer;
+    public readonly io: SocketServer;
     private readonly httpServer: HTTPServer;
 
     private constructor() {
