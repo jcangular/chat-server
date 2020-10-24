@@ -42,7 +42,14 @@ export default class ChatServer {
 
     private socketInit(): void {
         this.io.on('connection', client => {
-            console.log(`¡Cliente conectado!`);
+            console.log(`¡Cliente conectado[${client.id}]!`);
+
+            // Registrar cliente
+            socket.onConnect(client);
+
+            socket.onLogin(client, this.io);
+
+
             socket.disconnect(client);
             socket.onMessage(client, this.io);
         });
