@@ -47,11 +47,10 @@ export default class ChatServer {
             // Registrar cliente
             socket.onConnect(client);
 
-            socket.onLogin(client, this.io);
-
-
-            socket.disconnect(client);
+            socket.onConfigUser(client, this.io);
+            socket.onUserList(client, this.io);
             socket.onMessage(client, this.io);
+            socket.disconnect(client, this.io);
         });
 
     }

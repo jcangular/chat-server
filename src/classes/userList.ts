@@ -28,7 +28,7 @@ export default class UserList {
      * Obtiene el listado de usuarios conectados.
      */
     public getUserList(): User[] {
-        return this.users;
+        return this.users.filter(u => u.name).sort((a, b) => a.name.localeCompare(b.name));
     }
 
     public getUser(id: string): User | null {

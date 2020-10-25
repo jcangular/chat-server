@@ -14,8 +14,11 @@ export const onConnect = (client: Socket) => {
  * Escucha cuando un cliente se desconecta.
  * @param client Socket del cliente.
  */
-export const disconnect = (client: Socket) => {
-    client.on('disconnect', () => connectedUsers.deleteUser(client.id));
+export const disconnect = (client: Socket, io: SocketServer) => {
+    client.on('disconnect', () => {
+        connectedUsers.deleteUser(client.id);
+        io.emit('connectedUsers', connectedUsers.getUserList());
+    });
 };
 
 /**
@@ -29,9 +32,16 @@ export const onMessage = (client: Socket, io: SocketServer) => {
     });
 };
 
-export const onLogin = (client: Socket, io: SocketServer) => {
-    client.on('loginUser', (data: any, callback: Function) => {
+export const onConfigUser = (client: Socket, io: SocketServer) => {
+    client.on('config-user', (data: any, callback: Function) => {
         connectedUsers.updateName(client.id, data.name);
         callback({ ok: true, id: client.id });
+        io.emit('connectedUsers', connectedUsers.getUserList());
+    });
+};
+
+export const onUserList = (client: Socket, io: SocketServer) => {
+    client.on('listUser', () => {
+        io.to(client.id).emit('connectedUsers', connectedUsers.getUserList());
     });
 };
